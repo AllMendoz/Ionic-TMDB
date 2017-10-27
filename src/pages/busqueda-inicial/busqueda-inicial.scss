@@ -1,0 +1,47 @@
+page-busqueda-inicial {
+
+    .page-content{
+        background: color($colors, dark);
+      }
+    
+      .card-title{
+          // position: absolute;
+          // top: 30%;
+          font-size: 0.9em;
+          width: 100%;
+          // font-weight: bold;
+          color: #ecf0f1;
+          background: transparent;
+      }
+    
+      .card{
+        background: color($colors, dark);
+      }
+      .card-subtitle {
+        font-size: 1.0em;
+        position: absolute;
+        bottom: 10px;
+        width: 100%;
+        color:#ecf0f1;
+      }
+    
+      .scroll-content{
+        overflow: auto;
+      }
+    
+      .options_button{
+        color: #000000 !important;
+        border-bottom-color: color($colors, danger) !important;
+        background: color($colors, secondary) !important;
+      }
+      .search-bar{
+        width: 100%;
+        
+        
+      }
+
+      .df{
+        background: color($colors, danger) !important;
+       
+      }
+}

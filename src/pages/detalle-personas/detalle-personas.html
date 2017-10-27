@@ -1,0 +1,98 @@
+<!--
+  Generated template for the DetallePersonasPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class='de'>
+
+  <ion-navbar color='primary'>
+    <ion-title>
+      {{persona?.name}}
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class='page-content' padding>
+
+  <ion-card *ngIf="this.persona; let persona">
+    <img src="{{'https://image.tmdb.org/t/p/w500'+persona.profile_path}}" />
+
+
+    <div class="card-subtitle">
+      <b> También conocido como: </b>
+      <ion-list>
+        <ion-item class="item-info">
+          <ion-badge class="badge-info" *ngFor="let known of persona.also_known_as" item-start>{{known}} </ion-badge>
+        </ion-item>
+
+      </ion-list>
+    </div>
+
+
+    <ion-row class="small-padding">
+
+      <ion-card>
+
+        <ion-card-header>
+          <b> Información Personal </b>
+        </ion-card-header>
+
+        <ion-card-content>
+
+          <ion-card>
+            <ion-card-header>
+              <b> Lugar de Nacimiento</b>
+            </ion-card-header>
+
+
+            <ion-card-content>
+              {{persona.place_of_birth}}
+            </ion-card-content>
+          </ion-card>
+
+          <ion-card>
+              <ion-card-header>
+                <b> Fecha de Nacimiento</b>
+              </ion-card-header>
+  
+  
+              <ion-card-content>
+                {{persona.birthday}}
+              </ion-card-content>
+            </ion-card>
+
+            <ion-card>
+                <ion-card-header>
+                  <b> Sitio Oficial</b>
+                </ion-card-header>
+    
+    
+                <ion-card-content>
+                  {{persona.homepage}}
+                </ion-card-content>
+              </ion-card>
+
+
+        </ion-card-content>
+      </ion-card>
+    </ion-row>
+
+
+
+    <ion-row class="small-padding">
+
+      <ion-card>
+        <ion-card-header>
+          <b> Biografía</b>
+        </ion-card-header>
+
+
+        <ion-card-content>
+         <p ALIGN="justify"> {{persona.biography}} </p>
+        </ion-card-content>
+      </ion-card>
+
+
+    </ion-row>

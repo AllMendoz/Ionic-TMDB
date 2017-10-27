@@ -1,0 +1,185 @@
+<!--
+  Generated template for the BusquedaInicialPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  
+    <ion-navbar color='light'>
+     
+      <img  src="../assets/imgs/banner.png"/>
+       
+    </ion-navbar>
+  
+    <ion-navbar color='danger'>
+       
+        
+         <ion-buttons end class='search-bar'>
+            <ion-searchbar  #search (ionChange)='searchBusqueda(search.value)'></ion-searchbar>
+        </ion-buttons>
+      </ion-navbar>
+      
+  
+  </ion-header>
+  
+  <ion-content padding class='page-content'>
+  
+  
+      <ion-navbar color='azul'>
+    <h2 >Personas </h2>
+      </ion-navbar>
+    <ion-toolbar  >
+      <ion-segment [(ngModel)]="personSelection" (ionChange)='getBusquedaPersona(personSelection)'>
+      
+        <ion-segment-button value="popular"  color='secundary' class='options_button'>
+          Mas Nombrados
+        </ion-segment-button>
+      
+      </ion-segment>
+    </ion-toolbar>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6 col-md-4 col-lg-1 *ngFor='let persona of personas' >
+  
+      <ion-card class='card'  class="movie-info" (click)='goToDetallePersonas(persona.id)'>
+  
+        <ion-card-title #popoverText  class="card-title">
+          {{persona.name}}
+        </ion-card-title>
+  
+        <img  src="{{'https://image.tmdb.org/t/p/w500'+persona.profile_path}}"/>
+  
+        <div class="card-subtitle">
+          <ion-row>
+            <ion-col>
+                <ion-icon name="md-moon"></ion-icon>
+                <div>{{persona.popularity}}</div>
+            </ion-col>
+            <ion-col>
+                <ion-icon name="ios-pulse"></ion-icon>
+                <div>{{persona.birthday | date: 'yyyy'}}</div>
+            </ion-col>
+          </ion-row>
+        </div>
+  
+      </ion-card>
+  
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+    <ion-navbar color='azul'>
+    <h2>Series </h2>
+    </ion-navbar>
+    <ion-toolbar no-border-top  >
+      <ion-segment [(ngModel)]="tvSelection" (ionChange)='getBusquedaSeries(tvSelection)'>
+        <ion-segment-button value="airing_today" class='options_button'>
+          Hoy
+        </ion-segment-button>
+        <ion-segment-button value="popular" class='options_button'>
+        + Vistas
+        </ion-segment-button>
+        <ion-segment-button value="top_rated" class='options_button'>
+          + Puntaje
+        </ion-segment-button>
+       
+      </ion-segment>
+    </ion-toolbar>
+
+   
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6 col-md-4 col-lg-1 *ngFor='let serie of series' >
+  
+      <ion-card class='card'  class="movie-info" (click)='goToDetalleSeries(serie.id)'>
+  
+        <ion-card-title #popoverText  class="card-title">
+          {{serie.name}}
+        </ion-card-title>
+  
+        <img  src="{{'https://image.tmdb.org/t/p/w500'+serie.poster_path}}"/>
+  
+        <div class="card-subtitle">
+          <ion-row>
+            <ion-col>
+                <ion-icon name="star"></ion-icon>
+                <div>{{serie.vote_average}}</div>
+            </ion-col>
+            <ion-col>
+                <ion-icon name="calendar"></ion-icon>
+                <div>{{serie.first_air_date | date: 'yyyy'}}</div>
+            </ion-col>
+          </ion-row>
+        </div>
+  
+      </ion-card>
+  
+  
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-navbar color='azul'>
+    <h2>Películas </h2>
+    </ion-navbar>
+    <ion-toolbar no-border-top  >
+      <ion-segment [(ngModel)]="movieSelection" (ionChange)='getBusquedaPelicula(movieSelection)'>
+        <ion-segment-button value="now_playing" class='options_button'>
+         Teatros
+        </ion-segment-button>
+        <ion-segment-button value="popular" class='options_button'>
+          Popular
+        </ion-segment-button>
+        <ion-segment-button value="top_rated" class='options_button'>
+         + Puntaje
+        </ion-segment-button>
+        <ion-segment-button value="upcoming" class='options_button'>
+          Estrenos
+        </ion-segment-button>
+      </ion-segment>
+    </ion-toolbar>
+
+ 
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6 col-md-4 col-lg-1 *ngFor='let movie of movies' >
+  
+      <ion-card class='card'  class="movie-info" (click)='goToDetallePeliculas(movie.id)'>
+  
+        <ion-card-title #popoverText  class="card-title">
+          {{movie.title}}
+        </ion-card-title>
+  
+        <img  src="{{'https://image.tmdb.org/t/p/w500'+movie.poster_path}}"/>
+  
+        <div class="card-subtitle">
+          <ion-row>
+            <ion-col>
+                <ion-icon name="star"></ion-icon>
+                <div>{{movie.vote_average}}</div>
+            </ion-col>
+            <ion-col>
+                <ion-icon name="calendar"></ion-icon>
+                <div>{{movie.release_date | date: 'yyyy'}}</div>
+            </ion-col>
+          </ion-row>
+        </div>
+  
+      </ion-card>
+  
+  
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+   <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+     <ion-infinite-scroll-content></ion-infinite-scroll-content>
+   </ion-infinite-scroll>
+  
+  
+  
+  </ion-content>
+  
